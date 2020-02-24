@@ -1,0 +1,50 @@
+﻿@model Flores_De_Mayo_Information_System.Models.Entity.Feedback
+
+@{
+    ViewBag.Title = "_AnswerFeedback";
+    Layout = "~/Views/Shared/_BasicLayout.cshtml";
+}
+
+@using (Html.BeginForm("AnswerFeedback", "Feedback", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(m => m.FId)
+    @Html.HiddenFor(m => m.Email)
+    @Html.HiddenFor(m => m.DSetId)
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            <div class="col-md-12">
+                <input type="text" disabled style="font-size:23px" class="form-control-plaintext border rounded p-2 text-center" value="@Model.Email" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Message, htmlAttributes: new { @class = "control-label col-md-12" })
+            <div class="col-md-12">
+                @Html.TextAreaFor(model => model.Message, new { @class = "form-control", rows="6" })
+                @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-12">Set Message to Spam</label>
+            <div class="col-md-12">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.SpamMessage)
+                    @Html.ValidationMessageFor(model => model.SpamMessage, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}

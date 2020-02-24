@@ -1,0 +1,353 @@
+﻿
+@{
+    ViewBag.Title = "_AdminLayout";
+    Layout = "~/Views/Shared/_BasicLayout.cshtml";
+}
+
+<style>
+
+    .display-4 {
+        font-size: 35px;
+    }
+
+    @@font-face {
+        font-family: 'Muli';
+        /*src: url(../../fonts/Muli.ttf);*/
+    }
+
+    .sidebar {
+        height: 100%;
+        width: 200px; /*change to 0px*/
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #212F3D;
+        overflow-x: hidden;
+        transition: 0.5s;
+    }
+
+    .openbtn {
+        font-size: 20px;
+        cursor: pointer;
+        background-color: #212F3D;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+    }
+
+    .openbtn:hover {
+        background-color: #444;
+    }
+
+    #main-content {
+        transition: margin-left .5s;
+        margin-left: 200px;
+    }
+
+    #topNavBar {
+        transition: margin-left .5s;
+        background-color: #212F3D;
+        margin-left: 200px;
+    }
+
+    #main-account-link {
+        font-size: 17px;
+        background-color: #212F3D;
+    }
+
+    #sub-account-link {
+        background-color: #273746;
+        font-size: 14px;
+    }
+
+    #main-account-link a {
+        font-weight: 600;
+        color: #566573;
+    }
+
+    #sub-account-link a {
+        font-weight: 600;
+        color: #808B96;
+        margin-left: 40px;
+    }
+
+    #main-account-link a:hover {
+        text-decoration: none;
+        color: #D6DBDF;
+        background-color: #2C3E50;
+    }
+
+    #sub-account-link a:hover {
+        text-decoration: none;
+        color: #EAECEE;
+        background-color: #273746;
+    }
+
+    #logo-top {
+        width: 70px;
+        height: 50px;
+        min-width: 60px;
+        min-height: 40px;
+    }
+</style>
+
+<!-- E n d Styles -->
+<!-- Start Content -->
+
+
+<div class="sidebar" id="sidebar">
+
+    <!-- Image Top -->
+    <div class="mb-3">
+
+        <a href="#" id="profile-image" class="">
+            <img src="~/Content/AdminImages/user.png" width="40%" height="40%" class="mx-auto d-block mt-3 mb-2" />
+        </a>
+
+        <p class="text-center mb-0" style="font-size:25px; color:white; font-family:'Muli';">@User.Identity.Name</p>
+
+        @{ 
+            var userType = "";
+
+            if (User.IsInRole("Admin"))
+            {
+                userType = "Admin";
+            }
+            else
+            {
+                userType = "Officer";
+            }
+        }
+
+        <p class="text-center mt-0" style="font-size:13px; color:white; font-family:'Muli'; font-weight:lighter;">@userType</p>
+
+    </div>
+
+    <div class="nav-links">
+
+        <ul class="nav flex-column" id="main-account-link">
+
+            <li class="nav-item">
+                <a href="#" class="nav-link hvr-underline-from-left hvr-wobble-skew" data-toggle="collapse" aria-expanded="false" aria-controls="account-collapse" data-target="#account-collapse">
+                    Accounts
+                </a>
+                <div class="collapse" id="account-collapse" style="background-color: #2C3E50;">
+
+                    <ul class="nav flex-column" id="sub-account-link">
+
+                        <li class="nav-item">
+                            <a href="/Account/MyAccount" class="nav-link" id="">My Account</a>
+                        </li>
+
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a href="/Account/DisplayUsers" class="nav-link" id="">Users and Role</a>
+                            </li>
+
+                        }
+                        <li class="nav-item">
+                            <a href="/Account/DisplayRoles" class="nav-link" id="">Modify Roles</a>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link hvr-underline-from-left hvr-wobble-skew" data-toggle="collapse" aria-expanded="false" aria-controls="alayan-collapse" data-target="#alayan-collapse">
+                    Alayan
+                </a>
+                <div class="collapse" id="alayan-collapse" style="background-color: #2C3E50;">
+
+                    <ul class="nav flex-column" id="sub-account-link">
+                        <li class="nav-item">
+                            <a href="/Alayan/Index" class="nav-link" id="" target="_blank">Calendar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Alayan/DisplayAlays" class="nav-link" id="">Alays</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Alayan/EditAlayanDateType" class="nav-link" id="">Alayan Date Configuration</a>
+                        </li>
+                    </ul>
+
+                </div>
+            </li>
+
+            @if (User.IsInRole("Admin"))
+            {
+                <li class="nav-item">
+                    <a href="#" class="nav-link hvr-underline-from-left hvr-wobble-skew" data-toggle="collapse" aria-expanded="false" aria-controls="application-collapse" data-target="#application-collapse">
+                        Application<br /><span class="text-muted" style="font-size:" 3px"> Sagala & Officer</span>
+                    </a>
+                    <div class="collapse" id="application-collapse" style="background-color: #2C3E50;">
+
+                        <ul class="nav flex-column" id="sub-account-link">
+                            <li class="nav-item">
+                                <a href="/Application/DisplayApplications" class="nav-link" id="">Applications</a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </li>
+            }
+
+            @if (User.IsInRole("Admin"))
+            {
+                <li class="nav-item">
+                    <a href="#" class="nav-link hvr-underline-from-left hvr-wobble-skew" data-toggle="collapse" aria-expanded="false" aria-controls="officer-collapse" data-target="#officer-collapse">
+                        Officer
+                    </a>
+                    <div class="collapse" id="officer-collapse" style="background-color: #2C3E50;">
+
+                        <ul class="nav flex-column" id="sub-account-link">
+
+                            <li class="nav-item">
+                                <a href="/Officer/RegisterOfficer" class="nav-link" id="">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/Officer/DisplayCreateOfficer" class="nav-link" id="">Pair and Match</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/Officer/PromotePresident" class="nav-link" id="">Promote</a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </li>
+            }
+
+            <li class="nav-item">
+                <a href="#" class="nav-link hvr-underline-from-left hvr-wobble-skew" data-toggle="collapse" aria-expanded="false" aria-controls="sagala-collapse" data-target="#sagala-collapse">
+                    Sagala
+                </a>
+                <div class="collapse" id="sagala-collapse" style="background-color: #2C3E50;">
+
+                    <ul class="nav flex-column" id="sub-account-link">
+
+                        <li class="nav-item">
+                            <a href="/Sagala/PairSagala" class="nav-link" id="">Pair and Match</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Sagala/ListSagalas" class="nav-link" id="">List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Sagala/DisplaySagalaTitles" class="nav-link" id="">Sagala Titles</a>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link hvr-underline-from-left hvr-wobble-skew" data-toggle="collapse" aria-expanded="false" aria-controls="sagala-collapse" data-target="#webcnt-collapse">
+                    Web Content
+                </a>
+                <div class="collapse" id="webcnt-collapse" style="background-color: #2C3E50;">
+
+                    <ul class="nav flex-column" id="sub-account-link">
+
+                        <li class="nav-item">
+                            <a href="/WebContent/Announcements" class="nav-link" id="">Announcements</a>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a href="/Application/ModifyWebSettings" class="nav-link hvr-underline-from-left hvr-wobble-skew">
+                    Web Settings
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link hvr-underline-from-left hvr-wobble-skew" data-toggle="collapse" aria-expanded="false" aria-controls="sagala-collapse" data-target="#feedback-collapse">
+                    Feedbacks
+                </a>
+                <div class="collapse" id="feedback-collapse" style="background-color: #2C3E50;">
+
+                    <ul class="nav flex-column" id="sub-account-link">
+
+                        <li class="nav-item">
+                            <a href="/Feedback/DisplayFeedbacks" class="nav-link" id="">All Feedbacks</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Feedback/SpamFeedbacks" class="nav-link" id="">Spam Feedbacks</a>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </li>
+        </ul>
+
+    </div>
+
+</div>
+
+<div id="topNavBar" class="fixed-top p-0 w-100">
+    <button class="openbtn h-100 mt-2 mb-2 mr-2" onclick="toggleNav()">☰</button>
+    <a href="/WebContent/DisplayAnnouncements">
+        <img src="~/Content/AdminImages/Flower logo.png" class="image-responsive p-0 mb-2 mr-2 mx-auto" id="logo-top" />
+    </a>
+    @*<p class="float-right mt-2 mb-2 mr-2 " style="color:white;">Name: @User.Identity.Name</p>*@
+
+    <div class="float-right">
+        @using Microsoft.AspNet.Identity
+        @if (Request.IsAuthenticated)
+        {
+            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+            {
+            @Html.AntiForgeryToken()
+
+            <ul class="">
+                <li class=""><a href="javascript:document.getElementById('logoutForm').submit()" class="nav-link m-3 font-weight-bold" style="color:white;">Log off</a></li>
+            </ul>
+            }
+        }
+    </div>
+</div>
+
+<div id="main-content" class=" rounded bordered">
+    <div class="container shadow-lg p-5 mb-5 bg-white rounded" style="background-color: white; margin-top:120px;" radius="50px">
+        @RenderBody()
+    </div>
+</div>
+
+<!-- E n d Content -->
+<!-- Start Scripts -->
+
+<script>
+    function toggleNav() {
+
+        var navWidth = document.getElementById('sidebar'), style = window.getComputedStyle(navWidth), width = style.getPropertyValue('width');
+
+        if (width == "0px") {
+            document.getElementById("sidebar").style.width = "200px";
+            document.getElementById("main-content").style.marginLeft = "200px";
+            document.getElementById("topNavBar").style.marginLeft = "200px";
+
+        } else if (width == "200px") {
+            document.getElementById("sidebar").style.width = "0";
+            document.getElementById("main-content").style.marginLeft = "0";
+            document.getElementById("topNavBar").style.marginLeft = "0";
+        }
+        }
+
+
+    $(document).click(function(e) {
+	    if (!$(e.target).is('.nav-links')) {
+    	    $('.collapse').collapse('hide');
+        }
+    });
+</script>
+
+@RenderSection("scripts", required: false)

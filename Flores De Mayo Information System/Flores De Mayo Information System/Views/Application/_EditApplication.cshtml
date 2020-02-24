@@ -1,0 +1,92 @@
+﻿@model Flores_De_Mayo_Information_System.Models.Entity.Application
+
+@{
+    ViewBag.Title = "EditApplication";
+    Layout = "~/Views/Shared/_BasicLayout.cshtml";
+
+
+    List<SelectListItem> dropDown = new List<SelectListItem>();
+
+    foreach (var appType in TempData["statusTypes"] as List<Flores_De_Mayo_Information_System.Models.Entity.ApplicationStatusType>)
+    {
+
+        dropDown.Add(new SelectListItem
+        {
+            Text = appType.Name,
+            Value = appType.ASTypId.ToString()
+        });
+
+    }
+}
+
+@using (Html.BeginForm("EditApplication", "Application", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @Html.HiddenFor(model => model.AppId)
+        @Html.HiddenFor(model => model.UserIdEvaluated)
+        @Html.HiddenFor(model => model.SinId)
+        @Html.HiddenFor(model => model.ATypeId)
+        @Html.HiddenFor(model => model.DSetIdApplied)
+        @Html.HiddenFor(model => model.DSetIdEvaluated)
+        @Html.HiddenFor(model => model.RerenceNum)
+
+        @*@Html.HiddenFor(model => model.DateSetting)
+            @Html.HiddenFor(model => model.DateSetting1)
+            @Html.HiddenFor(model => model.SinisianDatabase)
+            @Html.HiddenFor(model => model.ApplicationType)
+            @Html.HiddenFor(model => model.ApplicationStatusType)
+            @Html.HiddenFor(model => model.AspNetUser)*@
+
+        <div class="form-group">
+            <div class="col-md-12">
+                <input type="text" disabled style="font-size:26px" class="form-control-plaintext border rounded p-2 text-center" value="@Model.SinisianDatabase.LastName, @Model.SinisianDatabase.FirstName @Model.SinisianDatabase.MiddleName" />
+                @Html.ValidationMessageFor(model => model.SinId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="" class="control-label col-12">Application Type</label>
+            <div class="col-md-12">
+                <input type="text" disabled class="form-control-plaintext border rounded p-2" value="@Model.ApplicationType.Name" />
+                @Html.ValidationMessageFor(model => model.ATypeId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="" class="control-label col-12">Status</label>
+            <div class="col-md-12">
+                @Html.DropDownListFor(model => model.ASTypId, dropDown, Model.ApplicationStatusType.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ASTypId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="" class="control-label col-12">Date Applied</label>
+            <div class="col-md-12">
+                <input type="text" disabled class="form-control-plaintext border rounded p-2" value="@Model.DateSetting.Year.Value.ToShortDateString()" />
+                @Html.ValidationMessageFor(model => model.DSetIdApplied, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Remarks, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-12">
+                <center>
+                    @Html.TextAreaFor(model => model.Remarks, new { @class = "form-control", rows = "5" })
+                    @Html.ValidationMessageFor(model => model.Remarks, "", new { @class = "text-danger" })
+                </center>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-12">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}

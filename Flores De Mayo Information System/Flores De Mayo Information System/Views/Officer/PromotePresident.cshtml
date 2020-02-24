@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Flores_De_Mayo_Information_System.Models.Entity.OfficerPartner>
+
+@{
+    ViewBag.Title = "PromotePresident";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Promote President</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Male Officer
+        </th>
+        <th>
+            Female Officer
+        </th>
+        <th>
+            Status
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            <b>@item.AspNetUser.SinisianDatabase.LastName</b>, @item.AspNetUser.SinisianDatabase.FirstName @item.AspNetUser.SinisianDatabase.MiddleName
+        </td>
+        <td>
+            <b>@item.AspNetUser1.SinisianDatabase.LastName</b>, @item.AspNetUser1.SinisianDatabase.FirstName @item.AspNetUser1.SinisianDatabase.MiddleName
+        </td>
+        <td>
+            @{
+                var disabled = "btn-primary ";
+                if (item.IsPresident == true)
+                {
+                    disabled = "btn-secondary disabled";
+                    <span>President</span>
+                }
+                else
+                {
+                    <span>Officer</span>
+                }
+            }
+        </td>
+        <td>
+            <a href="@Url.Action("Promote", "Officer", new { oParId = item.OParId })" class="btn @disabled">Promote</a>
+        </td>
+    </tr>
+}
+
+</table>

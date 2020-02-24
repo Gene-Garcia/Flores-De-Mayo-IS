@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Flores_De_Mayo_Information_System.Models.Entity.AlayanDate>
+
+@{
+    ViewBag.Title = "EditAlayanDateType";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Edit Alayan Date</h2>
+
+<div class="container">
+
+    <table class="table">
+        <tr>
+            <th>
+                Date
+            </th>
+            <th>
+                Type
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    May @item.Date @DateTime.Now.Year
+                </td>
+                <td>
+                    @item.AlayanDateType.Name.ToUpper()
+                </td>
+                <td>
+                    <button onclick="Edit(@item.ADatId)" class="btn btn-primary">Edit</button>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+<div class="modal fade rounded" id="modal-for-editing" style="min-width:490px;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header" style="background-color:#008d88">
+                <!-- Heading -->
+                <h3 class="modal-title" style="color: #ffffff;">Edit Date</h3>
+                <a href="#" class="close" data-dismiss="modal" style="color: #000000;">&times;</a>
+            </div>
+
+            <div class="modal-body" id="modal-editing-body">
+                <!-- Content Body -->
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+
+        var Edit = function (id) {
+            
+            var url = "/Alayan/EditSelectedDate?dateId=" + id;
+
+            $("#modal-editing-body").load(url, function () {
+                $("#modal-for-editing").modal("show");
+
+            })
+
+
+        }
+
+    </script>
+}

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7e4610b1ecad4a17b411cc2a52d35c0d" Name="Diagram1">
+        <EntityTypeShape EntityType="FloresDeMayoModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloresDeMayoModel.Alayan" Width="1.5" PointX="3" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloresDeMayoModel.AlayanDate" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloresDeMayoModel.AlayanDateType" Width="1.5" PointX="1.5" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloresDeMayoModel.AlayanType" Width="1.5" PointX="0.75" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloresDeMayoModel.AnnouncementAsset" Width="1.5" PointX="10.5" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloresDeMayoModel.Announcement" Width="1.5" PointX="5.25" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloresDeMayoModel.Application" Width="1.5" PointX="8.25" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloresDeMayoModel.ApplicationStatusType" Width="1.5" PointX="6" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloresDeMayoModel.ApplicationType" Width="1.5" PointX="6" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloresDeMayoModel.AspNetRole" Width="1.5" PointX="6" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloresDeMayoModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloresDeMayoModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloresDeMayoModel.AspNetUserRole" Width="1.5" PointX="8.25" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloresDeMayoModel.AspNetUser" Width="1.5" PointX="3" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloresDeMayoModel.DateSetting" Width="1.5" PointX="0.75" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloresDeMayoModel.Feedback" Width="1.5" PointX="3" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloresDeMayoModel.FileStorage" Width="1.5" PointX="8.25" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloresDeMayoModel.OfficerHierarchy" Width="1.5" PointX="7.5" PointY="28.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloresDeMayoModel.OfficerPartner" Width="1.5" PointX="5.25" PointY="28" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloresDeMayoModel.SagalaPartner" Width="1.5" PointX="10.5" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloresDeMayoModel.SagalaTitle" Width="1.5" PointX="8.25" PointY="24.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloresDeMayoModel.SinisianDatabase" Width="1.5" PointX="0.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloresDeMayoModel.WebSetting" Width="1.5" PointX="3" PointY="26.375" IsExpanded="true" />
+        <AssociationConnector Association="FloresDeMayoModel.Alayan_ADatId" ManuallyRouted="false" />
+        <AssociationConnector Association="FloresDeMayoModel.Alayan_ATypId" ManuallyRouted="false" />
+        <AssociationConnector Association="FloresDeMayoModel.Alayan_DSetId" ManuallyRouted="false" />
+        <AssociationConnector Association="FloresDeMayoModel.Alayan_SinId" ManuallyRouted="false" />
+        <AssociationConnector Association="FloresDeMayoModel.AlayanDate_ADTypId" ManuallyRouted="false" />
+        <AssociationConnector Association="FloresDeMayoModel.AnnouncementAssets_AncId" ManuallyRouted="false" />
+        <AssociationConnector Association="FloresDeMayoModel.AnnouncementAssets_FileId" ManuallyRouted="false" />
+        <AssociationConnector Association="FloresDeMayoModel.Announcement_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="FloresDeMayoModel.Application_ASTypeId" ManuallyRouted="false" />
+        <AssociationConnector Association="FloresDeMayoModel.Application_ATypeId" ManuallyRouted="false" />
+        <AssociationConnector Association="FloresDeMayoModel.Application_DSetIdApplied" ManuallyRouted="false" />
+        <AssociationConnector Association="FloresDeMayoModel.Application_DSetIdEvaluated" ManuallyRouted="false" />
+        <AssociationConnector Association="FloresDeMayoModel.Application_SinId" ManuallyRouted="false" />
+        <AssociationConnector Association="FloresDeMayoModel.Application_UserIdEvaluated" ManuallyRouted="false" />
+        <AssociationConnector Association="FloresDeMayoModel.SagalaPartner_AppIdFirst" ManuallyRouted="false" />
+        <AssociationConnector Association="FloresDeMayoModel.SagalaPartner_AppIdSec" ManuallyRouted="false" />
+        <AssociationConnector Association="FloresDeMayoModel.FK_AspNetUserRoles_AspNetRoles_RoleID" ManuallyRouted="false" />
+        <AssociationConnector Association="FloresDeMayoModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="FloresDeMayoModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="FloresDeMayoModel.FK_AspNetUserRoles_AspNetUsers_UserID" ManuallyRouted="false" />
+        <AssociationConnector Association="FloresDeMayoModel.FK_AspNetUsers_SinisianDatabase" ManuallyRouted="false" />
+        <AssociationConnector Association="FloresDeMayoModel.OfficerPartner_UserIdFemale" ManuallyRouted="false" />
+        <AssociationConnector Association="FloresDeMayoModel.OfficerPartner_UserIdMale" ManuallyRouted="false" />
+        <AssociationConnector Association="FloresDeMayoModel.DSetId_Rel" ManuallyRouted="false" />
+        <AssociationConnector Association="FloresDeMayoModel.Feedback_DSetId" ManuallyRouted="false" />
+        <AssociationConnector Association="FloresDeMayoModel.SagalaPartner_DSetId" ManuallyRouted="false" />
+        <AssociationConnector Association="FloresDeMayoModel.OfficerHieararchy_OParId" ManuallyRouted="false" />
+        <AssociationConnector Association="FloresDeMayoModel.SagalaPartner_StitId" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

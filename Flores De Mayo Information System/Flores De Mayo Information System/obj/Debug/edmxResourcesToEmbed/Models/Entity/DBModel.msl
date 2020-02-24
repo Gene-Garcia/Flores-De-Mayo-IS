@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FloresDeMayoModelStoreContainer" CdmEntityContainer="DBEntities">
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="FloresDeMayoModel.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Alayans">
+      <EntityTypeMapping TypeName="FloresDeMayoModel.Alayan">
+        <MappingFragment StoreEntitySet="Alayan">
+          <ScalarProperty Name="AlaId" ColumnName="AlaId" />
+          <ScalarProperty Name="SinId" ColumnName="SinId" />
+          <ScalarProperty Name="DSetIdApplied" ColumnName="DSetIdApplied" />
+          <ScalarProperty Name="ATypId" ColumnName="ATypId" />
+          <ScalarProperty Name="ADatId" ColumnName="ADatId" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="Reference" ColumnName="Reference" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AlayanDates">
+      <EntityTypeMapping TypeName="FloresDeMayoModel.AlayanDate">
+        <MappingFragment StoreEntitySet="AlayanDate">
+          <ScalarProperty Name="ADatId" ColumnName="ADatId" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="ADTypId" ColumnName="ADTypId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AlayanDateTypes">
+      <EntityTypeMapping TypeName="FloresDeMayoModel.AlayanDateType">
+        <MappingFragment StoreEntitySet="AlayanDateType">
+          <ScalarProperty Name="ADTypId" ColumnName="ADTypId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AlayanTypes">
+      <EntityTypeMapping TypeName="FloresDeMayoModel.AlayanType">
+        <MappingFragment StoreEntitySet="AlayanType">
+          <ScalarProperty Name="ATypId" ColumnName="ATypId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AnnouncementAssets">
+      <EntityTypeMapping TypeName="FloresDeMayoModel.AnnouncementAsset">
+        <MappingFragment StoreEntitySet="AnnouncementAssets">
+          <ScalarProperty Name="AssId" ColumnName="AssId" />
+          <ScalarProperty Name="AncId" ColumnName="AncId" />
+          <ScalarProperty Name="FileId" ColumnName="FileId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Announcements">
+      <EntityTypeMapping TypeName="FloresDeMayoModel.Announcement">
+        <MappingFragment StoreEntitySet="Announcements">
+          <ScalarProperty Name="AncId" ColumnName="AncId" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="DatePosted" ColumnName="DatePosted" />
+          <ScalarProperty Name="IsArchived" ColumnName="IsArchived" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Applications">
+      <EntityTypeMapping TypeName="FloresDeMayoModel.Application">
+        <MappingFragment StoreEntitySet="Application">
+          <ScalarProperty Name="AppId" ColumnName="AppId" />
+          <ScalarProperty Name="ASTypId" ColumnName="ASTypId" />
+          <ScalarProperty Name="ATypeId" ColumnName="ATypeId" />
+          <ScalarProperty Name="SinId" ColumnName="SinId" />
+          <ScalarProperty Name="DSetIdApplied" ColumnName="DSetIdApplied" />
+          <ScalarProperty Name="DSetIdEvaluated" ColumnName="DSetIdEvaluated" />
+          <ScalarProperty Name="UserIdEvaluated" ColumnName="UserIdEvaluated" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="RerenceNum" ColumnName="RerenceNum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApplicationStatusTypes">
+      <EntityTypeMapping TypeName="FloresDeMayoModel.ApplicationStatusType">
+        <MappingFragment StoreEntitySet="ApplicationStatusType">
+          <ScalarProperty Name="ASTypId" ColumnName="ASTypId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApplicationTypes">
+      <EntityTypeMapping TypeName="FloresDeMayoModel.ApplicationType">
+        <MappingFragment StoreEntitySet="ApplicationType">
+          <ScalarProperty Name="ATypeId" ColumnName="ATypeId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="FloresDeMayoModel.AspNetRole">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="FloresDeMayoModel.AspNetUserClaim">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="FloresDeMayoModel.AspNetUserLogin">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserRoles">
+      <EntityTypeMapping TypeName="FloresDeMayoModel.AspNetUserRole">
+        <MappingFragment StoreEntitySet="AspNetUserRoles">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="FloresDeMayoModel.AspNetUser">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="SinId" ColumnName="SinId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DateSettings">
+      <EntityTypeMapping TypeName="FloresDeMayoModel.DateSetting">
+        <MappingFragment StoreEntitySet="DateSettings">
+          <ScalarProperty Name="DSetId" ColumnName="DSetId" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Feedbacks">
+      <EntityTypeMapping TypeName="FloresDeMayoModel.Feedback">
+        <MappingFragment StoreEntitySet="Feedback">
+          <ScalarProperty Name="FId" ColumnName="FId" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="DSetId" ColumnName="DSetId" />
+          <ScalarProperty Name="SpamMessage" ColumnName="SpamMessage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FileStorages">
+      <EntityTypeMapping TypeName="FloresDeMayoModel.FileStorage">
+        <MappingFragment StoreEntitySet="FileStorage">
+          <ScalarProperty Name="FileId" ColumnName="FileId" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OfficerHierarchies">
+      <EntityTypeMapping TypeName="FloresDeMayoModel.OfficerHierarchy">
+        <MappingFragment StoreEntitySet="OfficerHierarchy">
+          <ScalarProperty Name="OHieId" ColumnName="OHieId" />
+          <ScalarProperty Name="OParId" ColumnName="OParId" />
+          <ScalarProperty Name="Rank" ColumnName="Rank" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OfficerPartners">
+      <EntityTypeMapping TypeName="FloresDeMayoModel.OfficerPartner">
+        <MappingFragment StoreEntitySet="OfficerPartner">
+          <ScalarProperty Name="OParId" ColumnName="OParId" />
+          <ScalarProperty Name="UserIdMale" ColumnName="UserIdMale" />
+          <ScalarProperty Name="UserIdFemale" ColumnName="UserIdFemale" />
+          <ScalarProperty Name="IsPresident" ColumnName="IsPresident" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SagalaPartners">
+      <EntityTypeMapping TypeName="FloresDeMayoModel.SagalaPartner">
+        <MappingFragment StoreEntitySet="SagalaPartner">
+          <ScalarProperty Name="SParId" ColumnName="SParId" />
+          <ScalarProperty Name="AppIdFirst" ColumnName="AppIdFirst" />
+          <ScalarProperty Name="AppIdSec" ColumnName="AppIdSec" />
+          <ScalarProperty Name="STitId" ColumnName="STitId" />
+          <ScalarProperty Name="DSetId" ColumnName="DSetId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SagalaTitles">
+      <EntityTypeMapping TypeName="FloresDeMayoModel.SagalaTitle">
+        <MappingFragment StoreEntitySet="SagalaTitle">
+          <ScalarProperty Name="STitId" ColumnName="STitId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SinisianDatabases">
+      <EntityTypeMapping TypeName="FloresDeMayoModel.SinisianDatabase">
+        <MappingFragment StoreEntitySet="SinisianDatabase">
+          <ScalarProperty Name="SinId" ColumnName="SinId" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="Birthdate" ColumnName="Birthdate" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WebSettings">
+      <EntityTypeMapping TypeName="FloresDeMayoModel.WebSetting">
+        <MappingFragment StoreEntitySet="WebSettings">
+          <ScalarProperty Name="WSetId" ColumnName="WSetId" />
+          <ScalarProperty Name="DSetId" ColumnName="DSetId" />
+          <ScalarProperty Name="ApplicationOpen" ColumnName="ApplicationOpen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

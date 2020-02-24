@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Flores_De_Mayo_Information_System.Models.Entity.Announcement>
+
+@{
+    ViewBag.Title = "Announcements";
+    Layout = "~/Views/Shared/_WebContent.cshtml";
+}
+
+<div class="container">
+    <div class="card mb-5 bg-light shadow border-0">
+        <h2 class="m-5">Announcements</h2>
+        <p class="text-danger m-2">@TempData["errorMsg"]</p>
+    </div>
+</div>
+
+<style>
+
+    .carousel-control-prev-icon .carousel-control-next-icon{
+        background-color: black;
+        color:black;
+    }
+
+    .ancImgs {
+        width: 35%;
+        height: 35%;
+
+        min-width: 15%;
+        min-height: 15%;
+    }
+
+    #highlight{
+        border-bottom: 5px solid #f7beff;
+        height: 100%;
+        width: 100%;
+        margin-left:1px;
+    }
+</style>
+
+<div class="container">
+
+    @foreach (var anc in Model)
+    {
+        <div class="card mb-5 shadow p-3 bg-light rounded border-0">
+            <div id="announcementImg" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+
+                    @{
+
+                        var counter = 0;
+
+
+                        foreach (var img in anc.AnnouncementAssets)
+                        {
+
+                            if (counter == 0)
+                            {
+                                <div class="carousel-item active">
+                                    <img src="@img.FileStorage.Location" class="card-img-top ancImgs mx-auto d-block">
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="carousel-item">
+                                    <img src="@img.FileStorage.Location" class="card-img-top ancImgs mx-auto d-block">
+                                </div>
+                            }
+                            counter++;
+                        }
+                    }
+
+                </div>
+                @if (counter > 1)
+                {
+                    <a class="carousel-control-prev" href="#announcementImg" role="button" data-slide="prev">
+                        <img src="~/Content/AdminImages/back.png" width="15%" height="10%" />
+                    </a>
+                    <a class="carousel-control-next" href="#announcementImg" role="button" data-slide="next">
+                        <img src="~/Content/AdminImages/next.png" width="15%" height="10%" />
+                    </a>
+                }
+
+            </div>
+
+            <div class="card-body">
+                <h5 class="card-title">@anc.Subject</h5>
+                <p class="card-text" style="white-space:pre-wrap">@anc.Message</p>
+                <p class="card-text"><small class="text-muted">@anc.DatePosted, @anc.AspNetUser.UserName</small></p>
+            </div>
+
+            <div class="p-0 m-0" id="highlight"></div>
+        </div>
+    }
+
+</div>

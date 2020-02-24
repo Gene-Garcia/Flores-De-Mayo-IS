@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Flores_De_Mayo_Information_System.Models.Entity.Application>
+
+@{
+    ViewBag.Title = "RegisterOfficer";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Register Officer</h2>
+
+<table class="table table-responsive-md" id="example">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Application Status
+            </th>
+
+            <th>
+                Date Applied
+            </th>
+            <th>
+                Date Evaluated
+            </th>
+            <th>
+
+                Evaluated By
+            </th>
+            <th>
+
+                Rerence Number
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <b>@item.SinisianDatabase.LastName</b>, @item.SinisianDatabase.FirstName @item.SinisianDatabase.MiddleName
+                </td>
+                <td>
+                    @item.ApplicationStatusType.Name
+                </td>
+                <td>
+                    @item.DateSetting.Year.Value.ToString("MMMM") @item.DateSetting.Year.Value.Year
+                </td>
+
+                @if (item.DSetIdEvaluated == null && item.UserIdEvaluated == null)
+                {
+                    <td>N/A</td>
+                    <td>N/A</td>
+                }
+                else
+                {
+                    <td>
+                        @item.DateSetting.Year.Value.ToString("MMMM") @item.DateSetting.Year.Value.Year
+                    </td>
+                    <td>
+                        @item.AspNetUser.UserName
+                    </td>
+                }
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.RerenceNum)
+                </td>
+
+                <td>
+                    <a href="@Url.Action("RegisterOfficer", "Account", new { appId = item.AppId })" class="btn btn-primary">Register</a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+
+</table>

@@ -1,0 +1,142 @@
+﻿@model IEnumerable<Flores_De_Mayo_Information_System.Models.Entity.Alayan>
+
+@{
+    ViewBag.Title = "DisplayAlays";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Alayan Schedules</h2>
+
+<div class="form-horizontal">
+    <div class="form-group">
+        <button class="btn btn-primary" onclick="Add('a')">Add</button>
+    </div>
+</div>
+
+<table class="table table-responsive-md no-wrap " id="example">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Date of Schedule
+            </th>
+            <th>
+                Type of Alay
+            </th>
+            <th>
+                Date Type
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Remarks)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reference)
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <b>@item.SinisianDatabase.LastName</b>, @item.SinisianDatabase.FirstName @item.SinisianDatabase.MiddleName
+                </td>
+                <td>
+                    May @item.AlayanDate.Date
+                </td>
+                <td>
+                    @item.AlayanType.Name
+                </td>
+                <td>
+                    @item.AlayanDate.AlayanDateType.Name
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Remarks)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Reference)
+                </td>
+                <td>
+                    <button class="btn btn-primary" onclick="Edit(@item.AlaId)">Edit</button>
+                    <a href="@Url.Action("DeleteAlayan", "Alayan", new { alayId = item.AlaId})" class="btn btn-danger" onclick="return confirm('Are you sure you want to approve this application?');">Remove</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="modal fade rounded" id="modal-for-editing" style="min-width:490px;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header" style="background-color:#008d88">
+                <!-- Heading -->
+                <h3 class="modal-title" style="color: #ffffff;">Edit Alayan</h3>
+                <a href="#" class="close" data-dismiss="modal" style="color: #000000;">&times;</a>
+            </div>
+
+            <div class="modal-body" id="modal-editing-body">
+                <!-- Content Body -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade rounded" id="modal-for-adding" style="min-width:490px;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header" style="background-color:#008d88">
+                <!-- Heading -->
+                <h3 class="modal-title" style="color: #ffffff;">Add Alayan</h3>
+                <a href="#" class="close" data-dismiss="modal" style="color: #000000;">&times;</a>
+            </div>
+
+            <div class="modal-body" id="modal-adding-body">
+                <!-- Content Body -->
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+
+        var Edit = function (id) {
+
+            var url = "/Alayan/EditAlayan?alayId=" + id;
+
+            $("#modal-editing-body").load(url, function () {
+                $("#modal-for-editing").modal("show");
+
+            })
+
+        }
+        var url = ""
+        var Add = function (v) {
+
+            var url = "/Alayan/AddAlayan";
+
+            $("#modal-adding-body").load(url, function () {
+                $("#modal-for-adding").modal("show");
+
+            })
+
+        }
+
+
+        $(document).ready(function() {
+            $('#example').DataTable();
+            $('.dataTables_length').addClass('bs-select');
+        } );
+
+    </script>
+
+
+}

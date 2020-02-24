@@ -1,0 +1,113 @@
+﻿
+@{
+    ViewBag.Title = "_WebContent";
+    Layout = "~/Views/Shared/_BasicLayout.cshtml";
+}
+
+<style>
+
+    body {
+        background-color: #f1f3f4;
+    }
+
+    nav {
+        background-color: #400082;
+    }
+
+    #nav-img {
+        width: 75px;
+        height: 50px;
+        min-width: 75px;
+        min-height: 50px;
+    }
+
+    .display-4 {
+        font-size: 18px;
+        color: #f1f3f4;
+    }
+</style>
+
+<div>
+
+    <nav class="navbar navbar-expand-sm shadow mb-5">
+        <a class="navbar-brand" href="/Application/ModifyWebSettings">
+            <img src="~/Content/AdminImages/Flower logo.png" id="nav-img" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon  mx-auto d-block"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link display-4" href="/WebContent/DisplayAnnouncements">Announcements</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link display-4" href="/Alayan/Index">Alayan Calendar</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link display-4" href="/Officer/DisplayOfficerChart">Officer Chart</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link display-4" href="/Sagala/DisplaySagalas">Sagala</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle display-4" href="#" id="application" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Application
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="application">
+                        <a class="dropdown-item" href="/Application/CreateApplication">Officer or Sagala</a>
+                        <a class="dropdown-item" href="/Alayan/CreateAlayan">Alayan</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle display-4" href="#" id="status" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Status
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="status">
+                        <a class="dropdown-item" href="/Application/ViewApplicationStatus">Application Status</a>
+                        <a class="dropdown-item" href="/Alayan/AlayanSummary">Alayan Summary</a>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link display-4" href="/Feedback/WriteFeedback">Write Feedback</a>
+                </li>
+                @* DO NOT FORGET TO ADD THE APPLICATION LINK AND STATUS CHECKERS *@
+
+                @*<li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle display-4" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                    </li>*@
+
+            </ul>
+            <div class="">
+                 @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </nav>
+
+    <div class="">
+
+        @RenderBody()
+
+    </div>
+
+</div>
+
+@RenderSection("scripts", required: false)

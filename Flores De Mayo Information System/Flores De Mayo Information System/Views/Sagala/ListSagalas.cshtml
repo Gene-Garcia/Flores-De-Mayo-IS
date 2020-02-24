@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Flores_De_Mayo_Information_System.Models.Entity.SagalaPartner>
+
+@{
+    ViewBag.Title = "ListSagalas";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Sagalas</h2>
+
+
+<table class="table">
+    <caption>@Model.FirstOrDefault().DateSetting.Year.Value.ToShortDateString()</caption>
+    <tr>
+        <th>
+            Full Name
+        </th>
+        <th>
+            Partner
+        </th>
+        <th>
+            Title
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <b>@item.Application.SinisianDatabase.LastName</b> @item.Application.SinisianDatabase.FirstName @item.Application.SinisianDatabase.MiddleName
+        </td>
+        <td>
+            @if (item.Application1 == null)
+            {
+                <span></span>
+            }
+            else
+            {
+                <b>@item.Application1.SinisianDatabase.LastName</b> @item.Application1.SinisianDatabase.FirstName @item.Application1.SinisianDatabase.MiddleName
+            }
+        </td>
+        <td>
+            @item.SagalaTitle.Name
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,71 @@
+﻿@model Flores_De_Mayo_Information_System.Models.Entity.Alayan
+
+@{
+    ViewBag.Title = "ViewApplicationStatus";
+    Layout = "~/Views/Shared/_WebContent.cshtml";
+}
+
+<div class="container">
+    <div class="card mb-5 bg-light shadow border-0">
+        <h2 class="m-5">Alayan Summary</h2>
+    </div>
+</div>
+
+<div class="container">
+    <div class="card mb-5 bg-light shadow border-0">
+
+        <div class="m-4">
+
+            <h2 class="color-danger">@TempData["errorMsg"]</h2>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group mx-auto d-block">
+                        <div class="col-md-10 form-inline">
+                            <label class="control-label font-weight-bold mr-2">Reference Number</label>
+                            @Html.EditorFor(model => model.Reference, new { htmlAttributes = new { @class = "form-control  mr-2" } })
+                            @Html.ValidationMessageFor(model => model.Reference, "", new { @class = "text-danger" })
+
+                            <input type="submit" value="Check" class="btn btn-primary" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+
+        @if (Model != null)
+        {
+
+            <div class="">
+
+                <table class="table table-responsive">
+
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Alayan Type</th>
+                        <th>Alayan Date</th>
+                        <th>Date Applied</th>
+
+                    </tr>
+
+                    <tr>
+                        <td><b>@Model.SinisianDatabase.LastName.ToUpper()</b>, @Model.SinisianDatabase.FirstName @Model.SinisianDatabase.MiddleName</td>
+                        <td>@Model.AlayanType.Name</td>
+                        <td><b>@Model.AlayanDate.Date</b></td>
+                        <td>@Model.DateSetting.Year.Value.ToShortDateString()</td>
+
+                    </tr>
+
+                </table>
+
+            </div>
+
+        }
+    </div>
+</div>

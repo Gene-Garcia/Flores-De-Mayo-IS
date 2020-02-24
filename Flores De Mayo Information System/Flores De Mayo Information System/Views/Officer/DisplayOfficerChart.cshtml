@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Flores_De_Mayo_Information_System.Models.Entity.OfficerHierarchy>
+
+@{
+    ViewBag.Title = "DisplayOfficerChart";
+    Layout = "~/Views/Shared/_WebContent.cshtml";
+
+    List<Flores_De_Mayo_Information_System.Models.Entity.OfficerHierarchy> officers = new List<Flores_De_Mayo_Information_System.Models.Entity.OfficerHierarchy>( Model.Where(m => m.OfficerPartner.IsPresident == false) );
+    var President = Model.Where(m => m.OfficerPartner.IsPresident == true).FirstOrDefault();
+
+}
+
+<div class="container">
+    <div class="card mb-5 bg-light shadow border-0">
+        <h2 class="m-5">Officer Chart</h2>
+    </div>
+</div>
+
+<div class="container">
+    <div class="card p-5 mb-5 bg-light shadow border-0">
+        <h3 class="">President</h3>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <p class="card-text text-center" style="font-size:18px;"><b>@President.OfficerPartner.AspNetUser.SinisianDatabase.LastName, @President.OfficerPartner.AspNetUser.SinisianDatabase.FirstName @President.OfficerPartner.AspNetUser.SinisianDatabase.MiddleName</b></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <p class="card-text text-center" style="font-size:18px;"><b>@President.OfficerPartner.AspNetUser1.SinisianDatabase.LastName, @President.OfficerPartner.AspNetUser1.SinisianDatabase.FirstName @President.OfficerPartner.AspNetUser1.SinisianDatabase.MiddleName</b></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="card p-5 bg-light shadow border-0">
+        <h3 class="">Officer(s)</h3>
+
+        @foreach (var officer in officers)
+        {
+            <div class="row mb-3">
+                <div class="col-sm-6">
+                    <div class="card bg-light">
+                        <div class="card-body">
+                            <p class="card-text text-center"><b>@officer.OfficerPartner.AspNetUser.SinisianDatabase.LastName, @officer.OfficerPartner.AspNetUser.SinisianDatabase.FirstName @officer.OfficerPartner.AspNetUser.SinisianDatabase.MiddleName</b></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card bg-light">
+                        <div class="card-body">
+                            <p class="card-text text-center"><b>@officer.OfficerPartner.AspNetUser1.SinisianDatabase.LastName, @officer.OfficerPartner.AspNetUser1.SinisianDatabase.FirstName @officer.OfficerPartner.AspNetUser1.SinisianDatabase.MiddleName</b></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+</div>

@@ -1,0 +1,126 @@
+﻿@model IEnumerable<Flores_De_Mayo_Information_System.Models.Entity.Announcement>
+
+@{
+    ViewBag.Title = "Announcements";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="row mb-4">
+    <div class="col-md-10">
+        <h2>Announcements</h2>
+    </div>
+    <p class="col-md-2"><button onclick="Post()" class="btn btn-primary">Create</button></p>
+</div>
+<div class="container">
+
+    @foreach (var anc in Model)
+    {
+        <div class="card mb-3 shadow p-3 bg-light rounded border-0">
+            <div class="card-body">
+                <h5 class="card-title">@anc.Subject</h5>
+                <p class="card-text"><small class="text-muted">@anc.DatePosted, @anc.AspNetUser.UserName</small></p>
+
+                @{
+                    var message = " ";
+                    if (anc.IsArchived == true)
+                    {
+                        message = "Announcement is Archived.";
+                    }
+                }
+
+                <p class="card-text">
+                    <small class="text-muted">
+                        @message
+                    </small>
+                </p>
+
+                <button class="btn btn-primary" onclick="Edit(@anc.AncId)">Edit</button>
+
+                @if (message != " ")
+                {
+                    <a href="@Url.Action("ArchiveAnnouncement", "WebContent", new { ancId = anc.AncId, tick = 0 })" class="btn btn-warning">Remove Archive</a>
+                    <a href="@Url.Action("PermanentlyDeleteAnnouncement", "WebContent", new { ancId = anc.AncId})" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete announcement?')">Permanently Delete Announcement</a>
+
+                }
+                else
+                {
+                    <a href="@Url.Action("ArchiveAnnouncement", "WebContent", new { ancId = anc.AncId})" class="btn btn-warning">Archive</a>
+                }
+
+
+            </div>
+        </div>
+    }
+
+</div>
+
+<div class="modal fade rounded" id="modal-for-editing" style="min-width:490px;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header" style="background-color:#008d88">
+                <!-- Heading -->
+                <h3 class="modal-title" style="color: #ffffff;">Edit Announcement</h3>
+                <a href="#" class="close" data-dismiss="modal" style="color: #000000;">&times;</a>
+            </div>
+
+            <div class="modal-body" id="modal-editing-body">
+                <!-- Content Body -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade rounded" id="modal-for-adding" style="min-width:490px;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header" style="background-color:#008d88">
+                <!-- Heading -->
+                <h3 class="modal-title" style="color: #ffffff;">Post Announcement</h3>
+                <a href="#" class="close" data-dismiss="modal" style="color: #000000;">&times;</a>
+            </div>
+
+            <div class="modal-body" id="modal-adding-body">
+                <!-- Content Body -->
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+
+        var Edit = function (id) {
+
+            var url = "/WebContent/EditAnnouncement?ancId=" + id;
+
+            $("#modal-editing-body").load(url, function () {
+                $("#modal-for-editing").modal("show");
+
+            })
+
+        }
+
+        var url = ""
+
+        var Post = function () {
+
+            var url = "/WebContent/PostAnnouncement";
+
+            $("#modal-adding-body").load(url, function () {
+                $("#modal-for-adding").modal("show");
+
+            })
+
+        }
+
+        $(document).ready(function() {
+            $('#example').DataTable();
+            $('.dataTables_length').addClass('bs-select');
+
+        } );
+    </script>
+
+}

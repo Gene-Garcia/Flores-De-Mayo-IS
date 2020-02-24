@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Flores_De_Mayo_Information_System.Models.Entity.Feedback>
+
+@{
+    ViewBag.Title = "DisplayFeedbacks";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Feedbacks</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Message)
+        </th>
+        <th>
+            Date Posted
+        </th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Message)
+            </td>
+            <td>
+                @item.DateSetting.Year.Value.ToString("MMMM dd, yyyy")
+            </td>
+            <td>
+                <button onclick="Answer('@item.FId')" class="btn btn-primary">Answer</button>
+            </td>
+        </tr>
+    }
+
+</table>
+<div class="modal fade rounded" id="modal-for-answering" style="min-width:490px;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header" style="background-color:#008d88">
+                <!-- Heading -->
+                <h3 class="modal-title" style="color: #ffffff;">Answer Feedback</h3>
+                <a href="#" class="close" data-dismiss="modal" style="color: #000000;">&times;</a>
+            </div>
+
+            <div class="modal-body" id="modal-answering-body">
+                <!-- Content Body -->
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script>
+
+        var Answer = function (id) {
+
+            var url = "/Feedback/AnswerFeedback?fId=" + id;
+
+            $("#modal-answering-body").load(url, function () {
+                $("#modal-for-answering").modal("show");
+
+            })
+
+        }
+
+    </script>
+
+}

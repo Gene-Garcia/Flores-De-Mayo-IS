@@ -1,0 +1,33 @@
+﻿<style>
+    .loginPart a, #loginLink {
+        color:white;
+    }
+
+    .loginPart a:hover{
+
+    }
+</style>
+
+@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+
+    <ul class="nav navbar-nav navbar-right loginPart">
+        <li class="mr-3 text-white nav-item">
+            @*@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })*@
+            <p class="nav-link">Hello @User.Identity.GetUserName()!</p>
+        </li>
+        <li class="mr-3 text-white nav-item"><a href="javascript:document.getElementById('logoutForm').submit()" class="nav-link">Log off</a></li>
+    </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right mr-3">
+        @*<li style="color:white" class="mr-3">@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "nav-link" })</li>*@
+        <li style="color:white" class="mr-3">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "nav-link" })</li>
+    </ul>
+}

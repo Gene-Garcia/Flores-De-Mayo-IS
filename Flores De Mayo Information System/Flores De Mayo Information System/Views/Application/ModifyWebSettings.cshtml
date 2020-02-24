@@ -1,0 +1,123 @@
+﻿@model Flores_De_Mayo_Information_System.Models.Entity.WebSetting
+
+@{
+    ViewBag.Title = "ModifyWebSettings";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+.dot {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+</style>
+
+<h2>Web Settings</h2>
+
+<div class="row">
+    <div class="col-md-12">
+
+        <form class="form-inline mt-3 border p-4 shadow bg-white">
+            <div class="form-group">
+
+                <label for="curYear" class="mr-sm-2">Current Year</label>
+                <input type="text" value="@Model.DateSetting.Year.Value.Year" class="form-control plaintext mr-sm-5" id="curYear" />
+
+            </div>
+
+            <div class="form-group">
+
+                @{ 
+                    var message = "";
+                    var dotStyle = "";
+
+                    if (Model.ApplicationOpen)
+                    {
+                        message = "Application is OPEN";
+                        dotStyle = "green";
+                    }
+                    else
+                    {
+                        message = "Application is CLOSE";
+                        dotStyle = "red";
+                    }
+                }
+
+                <label for="" class="mr-sm-2"><span style="background-color:@dotStyle"class="dot text-success"></span></label>
+                <input type="text" value="@message" class="form-control plaintext"/>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+
+        @using (Html.BeginForm("ChangeYear", "Application", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="mt-4 rounded p-5 shadow bg-white">
+
+                <h3>Change Year</h3>
+
+                <div class="form-group">
+
+                    @{
+                        var newYear = Model.DateSetting.Year.Value.Year + 1;
+                    }
+
+                    <input type="text" id="changeYear" name="newChangedYear" value="@newYear" class="form-control mb-3 bg-white" readonly />
+                    <input type="submit" value="Change" class="btn btn-sm btn-primary" />
+
+                </div>
+            </div>
+        }
+
+    </div>
+
+    <div class="col-md-6">
+
+        @using (Html.BeginForm("OpenApplication", "Application", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="mt-4 rounded p-5 shadow bg-white">
+
+                <h3>Open Application Period</h3>
+
+                <div class="form-group">
+
+                    @{
+                        var isChecked1 = "";
+                        var isChecked2 = "checked";
+
+                        if (Model.ApplicationOpen)
+                        {
+                            isChecked1 = "checked";
+                            isChecked2 = "";
+                        }
+                    }
+
+
+                    <div class="border bg-white rounded p-2 mb-3">
+                        <div class="custom-control custom-radio form-check">
+                            <input type="radio" class="custom-control-input form-check-input" name="applicationRadio" id="openApplication" value="open" @isChecked1>
+                            <label class="custom-control-label" for="openApplication">Accept applications</label>
+                        </div>
+                    </div>
+
+                    <div class="border bg-white rounded p-2 mb-3">
+                        <div class="custom-control custom-radio form-check">
+                            <input type="radio" class="custom-control-input form-check-input" name="applicationRadio" value="close" id="closeApplication" @isChecked2>
+                            <label class="custom-control-label" for="closeApplication" >Do not accept applications</label>
+                        </div>
+                    </div>
+
+                    <input type="submit" value="Change" class="btn btn-sm btn-primary" />
+
+                </div>
+            </div>
+        }
+
+    </div>
+</div>

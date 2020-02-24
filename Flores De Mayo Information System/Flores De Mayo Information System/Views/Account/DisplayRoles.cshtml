@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Flores_De_Mayo_Information_System.Models.Entity.AspNetRole>
+
+@{
+    ViewBag.Title = "AddRole";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row mb-4">
+    <div class="col-md-10">
+        <h2>Add Role</h2>
+    </div>
+    <p class="col-md-2"><button onclick="Add()" class="btn btn-primary">Create</button></p>
+</div>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            Actions
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                <a href="@Url.Action("DeleteRole", "Account", new { roleId = item.Id })" class="btn btn-warning" onclick="return confirm('Delete @item.Name?')">Delete</a>
+            </td>
+        </tr>
+    }
+
+</table>
+<div class="modal fade rounded" id="modal-for-adding" style="min-width:490px;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header" style="background-color:#008d88">
+                <!-- Heading -->
+                <h3 class="modal-title" style="color: #ffffff;">Add User Type Role</h3>
+                <a href="#" class="close" data-dismiss="modal" style="color: #000000;">&times;</a>
+            </div>
+
+            <div class="modal-body" id="modal-adding-body">
+                <!-- Content Body -->
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        var Add = function () {
+
+            var url = "/Account/AddRole";
+
+            $("#modal-adding-body").load(url, function () {
+                $("#modal-for-adding").modal("show");
+
+            })
+
+        }
+    </script>
+}

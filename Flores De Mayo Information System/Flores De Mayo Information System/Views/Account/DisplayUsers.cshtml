@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Flores_De_Mayo_Information_System.Models.Entity.AspNetUser>
+
+@{
+    ViewBag.Title = "DisplayUsers";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Accounts</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Role
+        </th>
+        <th>
+            Actions
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.SinisianDatabase.FirstName @item.SinisianDatabase.LastName
+            </td>
+            <td>
+                @foreach (var i in item.AspNetUserRoles)
+                {
+                    <p>@i.AspNetRole.Name</p>
+                }
+            </td>
+            <td>
+                <button onclick="Edit('@item.Id')" class="btn btn-primary">Edit</button>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div class="modal fade rounded" id="modal-for-editing" style="min-width:490px;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header" style="background-color:#008d88">
+                <!-- Heading -->
+                <h3 class="modal-title" style="color: #ffffff;">Edit User Role</h3>
+                <a href="#" class="close" data-dismiss="modal" style="color: #000000;">&times;</a>
+            </div>
+
+            <div class="modal-body" id="modal-editing-body">
+                <!-- Content Body -->
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+
+        var Edit = function (id) {
+
+            var url = "/Account/EditUserRole?userId=" + id;
+
+            $("#modal-editing-body").load(url, function () {
+                $("#modal-for-editing").modal("show");
+
+            })
+
+        }
+    </script>
+
+}

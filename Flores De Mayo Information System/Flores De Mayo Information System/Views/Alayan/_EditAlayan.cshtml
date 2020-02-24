@@ -1,0 +1,105 @@
+﻿@model Flores_De_Mayo_Information_System.Models.Entity.Alayan
+
+@{
+    ViewBag.Title = "EditAlayan";
+    Layout = "~/Views/Shared/_BasicLayout.cshtml";
+
+    List<SelectListItem> dropDates = new List<SelectListItem>();
+
+    foreach (var date in TempData["availableDates"] as List<Flores_De_Mayo_Information_System.Models.Entity.AlayanDate>)
+    {
+
+        dropDates.Add(new SelectListItem
+        {
+            Text = "May " + date.Date,
+            Value = date.ADatId.ToString()
+        });
+
+    }
+
+    List<SelectListItem> dropTypes = new List<SelectListItem>();
+
+    foreach (var aType in TempData["alayanTypes"] as List<Flores_De_Mayo_Information_System.Models.Entity.AlayanType>)
+    {
+
+        dropTypes.Add(new SelectListItem
+        {
+            Text = aType.Name,
+            Value = aType.ATypId.ToString()
+        });
+    }
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(model => model.AlaId)
+    @Html.HiddenFor(model => model.SinId)
+    @Html.HiddenFor(model => model.DSetIdApplied)
+    @Html.HiddenFor(model => model.Reference)
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            <div class="col-md-12">
+                <input type="text" disabled style="font-size:26px" class="form-control-plaintext border rounded p-2 text-center" value="@Model.SinisianDatabase.LastName, @Model.SinisianDatabase.FirstName @Model.SinisianDatabase.MiddleName" />
+                @Html.ValidationMessageFor(model => model.SinId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="" class="control-label col-12">Date Applied</label>
+            <div class="col-md-12">
+                <input type="text" disabled class="form-control-plaintext border rounded p-2" value="@Model.DateSetting.Year.Value.ToShortDateString()" />
+                @Html.ValidationMessageFor(model => model.DSetIdApplied, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="" class="control-label col-12">Alayan Type</label>
+            <div class="col-md-12">
+                @Html.DropDownListFor(model => model.ATypId, dropTypes, Model.AlayanType.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ATypId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="" class="control-label col-12">Date</label>
+            <div class="col-md-12">
+                @Html.DropDownListFor(model => model.ADatId, dropDates, "May " + Model.AlayanDate.Date, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ADatId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Reference, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-12">
+                <input type="text" disabled class="form-control-plaintext border rounded p-2" value="@Model.Reference" />
+                @Html.ValidationMessageFor(model => model.Reference, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Remarks, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-12">
+                <center>
+                    @Html.TextAreaFor(model => model.Remarks, new { htmlAttributes = new { @class = "form-control" }, cols = "50", rows = "5" })
+                    @Html.ValidationMessageFor(model => model.Remarks, "", new { @class = "text-danger" })
+                </center>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

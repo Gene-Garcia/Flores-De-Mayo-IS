@@ -1,0 +1,702 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FloresDeMayoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Alayan">
+    <Key>
+      <PropertyRef Name="AlaId" />
+    </Key>
+    <Property Name="AlaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SinId" Type="int" Nullable="false" />
+    <Property Name="DSetIdApplied" Type="int" Nullable="false" />
+    <Property Name="ATypId" Type="int" Nullable="false" />
+    <Property Name="ADatId" Type="int" Nullable="false" />
+    <Property Name="Remarks" Type="varchar" MaxLength="100" />
+    <Property Name="Reference" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AlayanDate">
+    <Key>
+      <PropertyRef Name="ADatId" />
+    </Key>
+    <Property Name="ADatId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ADTypId" Type="int" />
+  </EntityType>
+  <EntityType Name="AlayanDateType">
+    <Key>
+      <PropertyRef Name="ADTypId" />
+    </Key>
+    <Property Name="ADTypId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AlayanType">
+    <Key>
+      <PropertyRef Name="ATypId" />
+    </Key>
+    <Property Name="ATypId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AnnouncementAssets">
+    <Key>
+      <PropertyRef Name="AssId" />
+    </Key>
+    <Property Name="AssId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AncId" Type="int" Nullable="false" />
+    <Property Name="FileId" Type="int" />
+  </EntityType>
+  <EntityType Name="Announcements">
+    <Key>
+      <PropertyRef Name="AncId" />
+    </Key>
+    <Property Name="AncId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Subject" Type="varchar(max)" Nullable="false" />
+    <Property Name="Message" Type="varchar(max)" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="DatePosted" Type="datetime" Nullable="false" />
+    <Property Name="IsArchived" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Application">
+    <Key>
+      <PropertyRef Name="AppId" />
+    </Key>
+    <Property Name="AppId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ASTypId" Type="int" Nullable="false" />
+    <Property Name="ATypeId" Type="int" Nullable="false" />
+    <Property Name="SinId" Type="int" Nullable="false" />
+    <Property Name="DSetIdApplied" Type="int" Nullable="false" />
+    <Property Name="DSetIdEvaluated" Type="int" />
+    <Property Name="UserIdEvaluated" Type="nvarchar" MaxLength="128" />
+    <Property Name="Remarks" Type="varchar(max)" />
+    <Property Name="RerenceNum" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ApplicationStatusType">
+    <Key>
+      <PropertyRef Name="ASTypId" />
+    </Key>
+    <Property Name="ASTypId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ApplicationType">
+    <Key>
+      <PropertyRef Name="ATypeId" />
+    </Key>
+    <Property Name="ATypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="SinId" Type="int" />
+  </EntityType>
+  <EntityType Name="DateSettings">
+    <Key>
+      <PropertyRef Name="DSetId" />
+    </Key>
+    <Property Name="DSetId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Year" Type="date" />
+  </EntityType>
+  <EntityType Name="Feedback">
+    <Key>
+      <PropertyRef Name="FId" />
+    </Key>
+    <Property Name="FId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Message" Type="varchar(max)" Nullable="false" />
+    <Property Name="DSetId" Type="int" Nullable="false" />
+    <Property Name="SpamMessage" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FileStorage">
+    <Key>
+      <PropertyRef Name="FileId" />
+    </Key>
+    <Property Name="FileId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FileName" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Location" Type="varchar" MaxLength="250" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OfficerHierarchy">
+    <Key>
+      <PropertyRef Name="OHieId" />
+    </Key>
+    <Property Name="OHieId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OParId" Type="int" Nullable="false" />
+    <Property Name="Rank" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OfficerPartner">
+    <Key>
+      <PropertyRef Name="OParId" />
+    </Key>
+    <Property Name="OParId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserIdMale" Type="nvarchar" MaxLength="128" />
+    <Property Name="UserIdFemale" Type="nvarchar" MaxLength="128" />
+    <Property Name="IsPresident" Type="bit" />
+  </EntityType>
+  <EntityType Name="SagalaPartner">
+    <Key>
+      <PropertyRef Name="SParId" />
+    </Key>
+    <Property Name="SParId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AppIdFirst" Type="int" Nullable="false" />
+    <Property Name="AppIdSec" Type="int" />
+    <Property Name="STitId" Type="int" Nullable="false" />
+    <Property Name="DSetId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SagalaTitle">
+    <Key>
+      <PropertyRef Name="STitId" />
+    </Key>
+    <Property Name="STitId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SinisianDatabase">
+    <Key>
+      <PropertyRef Name="SinId" />
+    </Key>
+    <Property Name="SinId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LastName" Type="varchar(max)" />
+    <Property Name="FirstName" Type="varchar(max)" />
+    <Property Name="MiddleName" Type="varchar(max)" />
+    <Property Name="Birthdate" Type="date" />
+    <Property Name="Sex" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="WebSettings">
+    <Key>
+      <PropertyRef Name="WSetId" />
+    </Key>
+    <Property Name="WSetId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DSetId" Type="int" Nullable="false" />
+    <Property Name="ApplicationOpen" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="Alayan_ADatId">
+    <End Role="AlayanDate" Type="Self.AlayanDate" Multiplicity="1" />
+    <End Role="Alayan" Type="Self.Alayan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AlayanDate">
+        <PropertyRef Name="ADatId" />
+      </Principal>
+      <Dependent Role="Alayan">
+        <PropertyRef Name="ADatId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Alayan_ATypId">
+    <End Role="AlayanType" Type="Self.AlayanType" Multiplicity="1" />
+    <End Role="Alayan" Type="Self.Alayan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AlayanType">
+        <PropertyRef Name="ATypId" />
+      </Principal>
+      <Dependent Role="Alayan">
+        <PropertyRef Name="ATypId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Alayan_DSetId">
+    <End Role="DateSettings" Type="Self.DateSettings" Multiplicity="1" />
+    <End Role="Alayan" Type="Self.Alayan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DateSettings">
+        <PropertyRef Name="DSetId" />
+      </Principal>
+      <Dependent Role="Alayan">
+        <PropertyRef Name="DSetIdApplied" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Alayan_SinId">
+    <End Role="SinisianDatabase" Type="Self.SinisianDatabase" Multiplicity="1" />
+    <End Role="Alayan" Type="Self.Alayan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SinisianDatabase">
+        <PropertyRef Name="SinId" />
+      </Principal>
+      <Dependent Role="Alayan">
+        <PropertyRef Name="SinId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AlayanDate_ADTypId">
+    <End Role="AlayanDateType" Type="Self.AlayanDateType" Multiplicity="0..1" />
+    <End Role="AlayanDate" Type="Self.AlayanDate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AlayanDateType">
+        <PropertyRef Name="ADTypId" />
+      </Principal>
+      <Dependent Role="AlayanDate">
+        <PropertyRef Name="ADTypId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Announcement_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="Announcements" Type="Self.Announcements" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Announcements">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AnnouncementAssets_AncId">
+    <End Role="Announcements" Type="Self.Announcements" Multiplicity="1" />
+    <End Role="AnnouncementAssets" Type="Self.AnnouncementAssets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Announcements">
+        <PropertyRef Name="AncId" />
+      </Principal>
+      <Dependent Role="AnnouncementAssets">
+        <PropertyRef Name="AncId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AnnouncementAssets_FileId">
+    <End Role="FileStorage" Type="Self.FileStorage" Multiplicity="0..1" />
+    <End Role="AnnouncementAssets" Type="Self.AnnouncementAssets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FileStorage">
+        <PropertyRef Name="FileId" />
+      </Principal>
+      <Dependent Role="AnnouncementAssets">
+        <PropertyRef Name="FileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Application_ASTypeId">
+    <End Role="ApplicationStatusType" Type="Self.ApplicationStatusType" Multiplicity="1" />
+    <End Role="Application" Type="Self.Application" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ApplicationStatusType">
+        <PropertyRef Name="ASTypId" />
+      </Principal>
+      <Dependent Role="Application">
+        <PropertyRef Name="ASTypId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Application_ATypeId">
+    <End Role="ApplicationType" Type="Self.ApplicationType" Multiplicity="1" />
+    <End Role="Application" Type="Self.Application" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ApplicationType">
+        <PropertyRef Name="ATypeId" />
+      </Principal>
+      <Dependent Role="Application">
+        <PropertyRef Name="ATypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Application_DSetIdApplied">
+    <End Role="DateSettings" Type="Self.DateSettings" Multiplicity="1" />
+    <End Role="Application" Type="Self.Application" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DateSettings">
+        <PropertyRef Name="DSetId" />
+      </Principal>
+      <Dependent Role="Application">
+        <PropertyRef Name="DSetIdApplied" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Application_DSetIdEvaluated">
+    <End Role="DateSettings" Type="Self.DateSettings" Multiplicity="0..1" />
+    <End Role="Application" Type="Self.Application" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DateSettings">
+        <PropertyRef Name="DSetId" />
+      </Principal>
+      <Dependent Role="Application">
+        <PropertyRef Name="DSetIdEvaluated" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Application_SinId">
+    <End Role="SinisianDatabase" Type="Self.SinisianDatabase" Multiplicity="1" />
+    <End Role="Application" Type="Self.Application" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SinisianDatabase">
+        <PropertyRef Name="SinId" />
+      </Principal>
+      <Dependent Role="Application">
+        <PropertyRef Name="SinId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Application_UserIdEvaluated">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="Application" Type="Self.Application" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Application">
+        <PropertyRef Name="UserIdEvaluated" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DSetId_Rel">
+    <End Role="DateSettings" Type="Self.DateSettings" Multiplicity="1" />
+    <End Role="WebSettings" Type="Self.WebSettings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DateSettings">
+        <PropertyRef Name="DSetId" />
+      </Principal>
+      <Dependent Role="WebSettings">
+        <PropertyRef Name="DSetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Feedback_DSetId">
+    <End Role="DateSettings" Type="Self.DateSettings" Multiplicity="1" />
+    <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DateSettings">
+        <PropertyRef Name="DSetId" />
+      </Principal>
+      <Dependent Role="Feedback">
+        <PropertyRef Name="DSetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUserRoles_AspNetRoles_RoleID">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1" />
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUserRoles_AspNetUsers_UserID">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUsers_SinisianDatabase">
+    <End Role="SinisianDatabase" Type="Self.SinisianDatabase" Multiplicity="0..1" />
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SinisianDatabase">
+        <PropertyRef Name="SinId" />
+      </Principal>
+      <Dependent Role="AspNetUsers">
+        <PropertyRef Name="SinId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OfficerHieararchy_OParId">
+    <End Role="OfficerPartner" Type="Self.OfficerPartner" Multiplicity="1" />
+    <End Role="OfficerHierarchy" Type="Self.OfficerHierarchy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OfficerPartner">
+        <PropertyRef Name="OParId" />
+      </Principal>
+      <Dependent Role="OfficerHierarchy">
+        <PropertyRef Name="OParId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OfficerPartner_UserIdFemale">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="OfficerPartner" Type="Self.OfficerPartner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfficerPartner">
+        <PropertyRef Name="UserIdFemale" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OfficerPartner_UserIdMale">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="OfficerPartner" Type="Self.OfficerPartner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfficerPartner">
+        <PropertyRef Name="UserIdMale" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SagalaPartner_AppIdFirst">
+    <End Role="Application" Type="Self.Application" Multiplicity="1" />
+    <End Role="SagalaPartner" Type="Self.SagalaPartner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Application">
+        <PropertyRef Name="AppId" />
+      </Principal>
+      <Dependent Role="SagalaPartner">
+        <PropertyRef Name="AppIdFirst" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SagalaPartner_AppIdSec">
+    <End Role="Application" Type="Self.Application" Multiplicity="0..1" />
+    <End Role="SagalaPartner" Type="Self.SagalaPartner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Application">
+        <PropertyRef Name="AppId" />
+      </Principal>
+      <Dependent Role="SagalaPartner">
+        <PropertyRef Name="AppIdSec" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SagalaPartner_DSetId">
+    <End Role="DateSettings" Type="Self.DateSettings" Multiplicity="1" />
+    <End Role="SagalaPartner" Type="Self.SagalaPartner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DateSettings">
+        <PropertyRef Name="DSetId" />
+      </Principal>
+      <Dependent Role="SagalaPartner">
+        <PropertyRef Name="DSetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SagalaPartner_StitId">
+    <End Role="SagalaTitle" Type="Self.SagalaTitle" Multiplicity="1" />
+    <End Role="SagalaPartner" Type="Self.SagalaPartner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SagalaTitle">
+        <PropertyRef Name="STitId" />
+      </Principal>
+      <Dependent Role="SagalaPartner">
+        <PropertyRef Name="STitId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FloresDeMayoModelStoreContainer">
+    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Alayan" EntityType="Self.Alayan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AlayanDate" EntityType="Self.AlayanDate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AlayanDateType" EntityType="Self.AlayanDateType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AlayanType" EntityType="Self.AlayanType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AnnouncementAssets" EntityType="Self.AnnouncementAssets" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Announcements" EntityType="Self.Announcements" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Application" EntityType="Self.Application" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ApplicationStatusType" EntityType="Self.ApplicationStatusType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ApplicationType" EntityType="Self.ApplicationType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DateSettings" EntityType="Self.DateSettings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Feedback" EntityType="Self.Feedback" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FileStorage" EntityType="Self.FileStorage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OfficerHierarchy" EntityType="Self.OfficerHierarchy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OfficerPartner" EntityType="Self.OfficerPartner" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SagalaPartner" EntityType="Self.SagalaPartner" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SagalaTitle" EntityType="Self.SagalaTitle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SinisianDatabase" EntityType="Self.SinisianDatabase" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WebSettings" EntityType="Self.WebSettings" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="Alayan_ADatId" Association="Self.Alayan_ADatId">
+      <End Role="AlayanDate" EntitySet="AlayanDate" />
+      <End Role="Alayan" EntitySet="Alayan" />
+    </AssociationSet>
+    <AssociationSet Name="Alayan_ATypId" Association="Self.Alayan_ATypId">
+      <End Role="AlayanType" EntitySet="AlayanType" />
+      <End Role="Alayan" EntitySet="Alayan" />
+    </AssociationSet>
+    <AssociationSet Name="Alayan_DSetId" Association="Self.Alayan_DSetId">
+      <End Role="DateSettings" EntitySet="DateSettings" />
+      <End Role="Alayan" EntitySet="Alayan" />
+    </AssociationSet>
+    <AssociationSet Name="Alayan_SinId" Association="Self.Alayan_SinId">
+      <End Role="SinisianDatabase" EntitySet="SinisianDatabase" />
+      <End Role="Alayan" EntitySet="Alayan" />
+    </AssociationSet>
+    <AssociationSet Name="AlayanDate_ADTypId" Association="Self.AlayanDate_ADTypId">
+      <End Role="AlayanDateType" EntitySet="AlayanDateType" />
+      <End Role="AlayanDate" EntitySet="AlayanDate" />
+    </AssociationSet>
+    <AssociationSet Name="Announcement_UserId" Association="Self.Announcement_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Announcements" EntitySet="Announcements" />
+    </AssociationSet>
+    <AssociationSet Name="AnnouncementAssets_AncId" Association="Self.AnnouncementAssets_AncId">
+      <End Role="Announcements" EntitySet="Announcements" />
+      <End Role="AnnouncementAssets" EntitySet="AnnouncementAssets" />
+    </AssociationSet>
+    <AssociationSet Name="AnnouncementAssets_FileId" Association="Self.AnnouncementAssets_FileId">
+      <End Role="FileStorage" EntitySet="FileStorage" />
+      <End Role="AnnouncementAssets" EntitySet="AnnouncementAssets" />
+    </AssociationSet>
+    <AssociationSet Name="Application_ASTypeId" Association="Self.Application_ASTypeId">
+      <End Role="ApplicationStatusType" EntitySet="ApplicationStatusType" />
+      <End Role="Application" EntitySet="Application" />
+    </AssociationSet>
+    <AssociationSet Name="Application_ATypeId" Association="Self.Application_ATypeId">
+      <End Role="ApplicationType" EntitySet="ApplicationType" />
+      <End Role="Application" EntitySet="Application" />
+    </AssociationSet>
+    <AssociationSet Name="Application_DSetIdApplied" Association="Self.Application_DSetIdApplied">
+      <End Role="DateSettings" EntitySet="DateSettings" />
+      <End Role="Application" EntitySet="Application" />
+    </AssociationSet>
+    <AssociationSet Name="Application_DSetIdEvaluated" Association="Self.Application_DSetIdEvaluated">
+      <End Role="DateSettings" EntitySet="DateSettings" />
+      <End Role="Application" EntitySet="Application" />
+    </AssociationSet>
+    <AssociationSet Name="Application_SinId" Association="Self.Application_SinId">
+      <End Role="SinisianDatabase" EntitySet="SinisianDatabase" />
+      <End Role="Application" EntitySet="Application" />
+    </AssociationSet>
+    <AssociationSet Name="Application_UserIdEvaluated" Association="Self.Application_UserIdEvaluated">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Application" EntitySet="Application" />
+    </AssociationSet>
+    <AssociationSet Name="DSetId_Rel" Association="Self.DSetId_Rel">
+      <End Role="DateSettings" EntitySet="DateSettings" />
+      <End Role="WebSettings" EntitySet="WebSettings" />
+    </AssociationSet>
+    <AssociationSet Name="Feedback_DSetId" Association="Self.Feedback_DSetId">
+      <End Role="DateSettings" EntitySet="DateSettings" />
+      <End Role="Feedback" EntitySet="Feedback" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUserRoles_AspNetRoles_RoleID" Association="Self.FK_AspNetUserRoles_AspNetRoles_RoleID">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUserRoles_AspNetUsers_UserID" Association="Self.FK_AspNetUserRoles_AspNetUsers_UserID">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUsers_SinisianDatabase" Association="Self.FK_AspNetUsers_SinisianDatabase">
+      <End Role="SinisianDatabase" EntitySet="SinisianDatabase" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="OfficerHieararchy_OParId" Association="Self.OfficerHieararchy_OParId">
+      <End Role="OfficerPartner" EntitySet="OfficerPartner" />
+      <End Role="OfficerHierarchy" EntitySet="OfficerHierarchy" />
+    </AssociationSet>
+    <AssociationSet Name="OfficerPartner_UserIdFemale" Association="Self.OfficerPartner_UserIdFemale">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="OfficerPartner" EntitySet="OfficerPartner" />
+    </AssociationSet>
+    <AssociationSet Name="OfficerPartner_UserIdMale" Association="Self.OfficerPartner_UserIdMale">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="OfficerPartner" EntitySet="OfficerPartner" />
+    </AssociationSet>
+    <AssociationSet Name="SagalaPartner_AppIdFirst" Association="Self.SagalaPartner_AppIdFirst">
+      <End Role="Application" EntitySet="Application" />
+      <End Role="SagalaPartner" EntitySet="SagalaPartner" />
+    </AssociationSet>
+    <AssociationSet Name="SagalaPartner_AppIdSec" Association="Self.SagalaPartner_AppIdSec">
+      <End Role="Application" EntitySet="Application" />
+      <End Role="SagalaPartner" EntitySet="SagalaPartner" />
+    </AssociationSet>
+    <AssociationSet Name="SagalaPartner_DSetId" Association="Self.SagalaPartner_DSetId">
+      <End Role="DateSettings" EntitySet="DateSettings" />
+      <End Role="SagalaPartner" EntitySet="SagalaPartner" />
+    </AssociationSet>
+    <AssociationSet Name="SagalaPartner_StitId" Association="Self.SagalaPartner_StitId">
+      <End Role="SagalaTitle" EntitySet="SagalaTitle" />
+      <End Role="SagalaPartner" EntitySet="SagalaPartner" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -18,7 +18,7 @@ namespace Flores_De_Mayo_Information_System.Actions
 
         public static async Task SendEmail(IdentityMessage message)
         {
-            string apiKey = "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";
+            string apiKey = "";
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress(senderEmail, sendUsername);
 
